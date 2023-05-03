@@ -21,7 +21,7 @@ def index(request):
     return render(request,'index.html')
 
 
-
+# login
 def login(request):
     if request.method =='POST':
         username = request.POST.get('username')
@@ -38,6 +38,7 @@ def login(request):
 
     return render(request,'login.html')
 
+# logout
 def logout(request):
     auth.logout(request)
     messages.success(request,'logout')
