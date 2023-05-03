@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %}</title>
+    <!-- font  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark  px-5" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">S.P.E.A.M.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="/model_k/">GradientBoostingRegressor</a>
+              </li>
+              {% endif %}
+             
+            
+            </ul>
+            <form class="d-flex" role="search">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  {% if user.is_authenticated %}
+                  {% if user.is_superuser %}
+                  <li class="nav-item">
+                    <a class="nav-link"  href="/admin/"> <small> <i class="fa-solid fa-user"></i></small> &nbsp; {{user}}</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link"  href=""> <small> <i class="fa-solid fa-user"></i></small> &nbsp; {{user}}</a>
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link"  href="/logout/"> <small>  logout </small></a>
+                  </li>
+                  {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link"  href="/login/"> <small> <i class="fa-solid fa-user"></i></small> &nbsp; login</a>
+                    </li>
+                    {% endif %}
+                   
+                </ul>
+             
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      {% if messages %}
+        {% for i in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="z-index: 10000 !important;">
+          <strong>Message!</strong> {{i.message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="container mt-5 py-2">
+        {% block content %}
+    
+        {% endblock content %}
+      </div>
+  
+
+
+    {% block scripts %}
+    
+    {% endblock scripts %}
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

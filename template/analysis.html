@@ -1,0 +1,129 @@
+{% extends 'master.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="sidebar col-3">
+        <small style="text-transform: uppercase;">Word Cloud from</small>
+        <ul>
+           <a href="/model_url_k/?page=5"><li>Caption</li></a> 
+           <a href="/model_url_k/?page=6"> <li>Hashtags</li></a>
+        </ul>
+
+
+        <small style="text-transform: uppercase;">Regplot Plot for</small>
+        <ul>
+            <a href="/model_url_k/?page=1"><li>Followers<i class="fa-light fa-arrow-up-right"></i>  </li></a>
+           <a href="/model_url_k/?page=2"><li>Time Since Posted</li></a> 
+        </ul>
+
+        <small style="text-transform: uppercase;">Max Value Likes</small>
+        <ul>
+           <a href="/model_url_k/?page=4"> <li>Max Value Likes</li> </a>
+        </ul>
+      
+
+        <small style="text-transform: uppercase;">Gradient Regressor</small>
+        <ul>
+           <a href="/model_url_k/?page=7a"> <li>Gradient Regressor</li></a>
+           
+        </ul>
+        <small style="text-transform: uppercase;">Likes progression with</small> 
+        <ul>
+           <a href="/model_url_k/?page=8"> <li>100 Followers</li></a>
+           <a href="/model_url_k/?page=9"> <li>200 Followers</li></a>
+           <a href="/model_url_k/?page=aa"> <li>1000 Followers</li></a>
+        </ul>
+      
+        </ul>
+    </div>
+    <div class="col-3">
+        
+    </div>
+    <div class="col-9">
+        <div class="px-5 py-2">
+
+            
+
+            {% if '5' in request.GET.page %}
+            <div class="mt-3 px-5">
+                <div class="card-body">
+                   
+                </div>
+                <img src="{% static 'images/model_k/Caption.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% elif '6' in request.GET.page %}
+            <div class="mt-3 px-5">
+                <div class="card-body">
+                   
+                </div>
+                <img src="{% static 'images/model_k/Hashtags.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% elif '1' in request.GET.page %}
+            <div class="card mt-3 px-5">
+                <div class="card-body">
+                    <h5 class="card-title">Regplot Plot for Followers</h5>
+                   </div>
+                <img src="{% static 'images/model_k/Followers.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% elif '2' in request.GET.page %}
+            <div class="card mt-3 px-5">
+                <div class="card-body">
+                    <h5 class="card-title">Regplot Plot for Time Since Posted</h5>
+                   </div>
+                <img src="{% static 'images/model_k/Time since posted.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% elif '4' in request.GET.page %}
+            <div class="card mt-3 px-5">
+                <div class="card-body">
+                    <h5 class="card-title">Max Value Likes</h5>
+                    <h1>{{maxValLikes}}</h1>
+                </div>
+            </div>
+            {% elif '7a' in request.GET.page %}
+       
+            <div class="card mt-3 px-5">
+                <div class="card-body">
+                    <h5 class="card-title">Gradient Regressor</h5>
+                    </div>
+                <img src="{% static 'images/model_k/GradientRegressor.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            
+    
+            {% elif '8' in request.GET.page %}
+            <div class="mt-3 px-5">
+                <div class="card-body">
+                    </div>
+                <img src="{% static 'images/model_k/pred_with_follower_count_100.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% elif '9' in request.GET.page %}
+            <div class="mt-3 px-5">
+                <div class="card-body">
+                   </div>
+                <img src="{% static 'images/model_k/pred_with_follower_count_200.png' %}" class="card-img-bottom" alt="...">
+            </div>
+         
+            {% elif 'aa' in request.GET.page %}
+            
+            <div class="mt-3 px-5">
+                <div class="card-body">
+                    <h5 class="card-title">Likes progression with 1000 Followers</h5>
+                    </div>
+                <img src="{% static 'images/model_k/pred_with_follower_count_1000.png' %}" class="card-img-bottom" alt="...">
+            </div>
+            {% else %}
+                <h2 class="mt-5">Welcome</h2><br>
+                <p>Social media can benefit businesses by enabling marketers to spot trends in consumer behavior that are relevant to a business's industry and can influence the success of marketing efforts</p>
+
+                <p>Gradient Boosting is a popular boosting algorithm. In gradient boosting, each predictor corrects its predecessor’s error. </p>
+
+                <p>In contrast to Adaboost, the weights of the training instances are not tweaked, instead, each predictor is trained using the residual errors of predecessor as labels.</p>
+
+                <p>There is a technique called the Gradient Boosted Trees whose base learner is CART (Classification and Regression Trees).</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

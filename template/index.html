@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container herobx mt-5">
+    <div class="row hero-section">
+        <div class="col-6 px-5">
+
+            <h1 style="color:#333;font-size: 54px;font-weight: 700;">Social Media Post Engagement <span
+                    style="color:#635985;"> Analysis. </span></h1>
+            <p class="mt-3" style="font-size: 20px;color:#666;">Social media analytics is the process of collecting and
+                analyzing audience data shared on social networks to improve an organization's strategic business
+                decisions.</p>
+            <p style="font-size: 20px;color:#666;">
+                Social media can benefit businesses by enabling marketers to spot trends in consumer behavior that are
+                relevant to a business's industry and can influence the success of marketing efforts.</p>
+
+            {% if user.is_authenticated %}
+            <a href="/model_k/" class="btn btn-outline-dark  mt-3">analyzing</a>
+            {% else %}
+            <a href="/login/" class="btn btn-outline-dark w-50 mt-3">login & Start analyzing</a>
+            {% endif %}
+        </div>
+
+        <div class="col-6  px-5 mt-5">
+            <div class="d-flex justify-content-center ">
+                <!-- <img src="{% static 'images/homeimg.svg' %}" alt="">         -->
+                <img src="{% static 'images/home2.png' %}" style="transform: scale(1.5); margin-top: 100px;" alt="">
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 120px; padding: 2px 30px;">
+        <div class="col-6">
+            <p style="color:#666;">all &copy; copyrights</p>
+        </div>
+        <div class="col-6" style="text-align: end;">
+           <a href="{% static 'projectdoc/pro.txt' %}" style="text-decoration: none;"><p style="color:#666;cursor: pointer;" ><i class="fa-solid fa-paperclip"></i> Project By Ketan</p></a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
